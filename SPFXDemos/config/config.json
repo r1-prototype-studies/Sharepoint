@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "hello-world-from-sp-fx-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/helloWorldFromSpFx/HelloWorldFromSpFxWebPart.js",
+          "manifest": "./src/webparts/helloWorldFromSpFx/HelloWorldFromSpFxWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HelloWorldFromSpFxWebPartStrings": "lib/webparts/helloWorldFromSpFx/loc/{locale}.js"
+  }
+}
