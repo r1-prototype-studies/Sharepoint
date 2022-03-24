@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "multi-web-parts-demo-client-side-solution",
+    "id": "50b1a714-e487-4fb7-b067-54fb0e66cabe",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "multi-web-parts-demo description"
+      },
+      "longDescription": {
+        "default": "multi-web-parts-demo description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "multi-web-parts-demo Feature",
+        "description": "The feature that activates elements of the multi-web-parts-demo solution.",
+        "id": "0e260c95-4cd7-4319-8ce8-e6907dff6771",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/multi-web-parts-demo.sppkg"
+  }
+}

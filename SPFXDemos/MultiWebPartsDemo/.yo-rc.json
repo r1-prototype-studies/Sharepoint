@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "version": "1.14.0",
+    "libraryName": "multi-web-parts-demo",
+    "libraryId": "50b1a714-e487-4fb7-b067-54fb0e66cabe",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "multi-web-parts-demo",
+    "solutionShortDescription": "multi-web-parts-demo description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
