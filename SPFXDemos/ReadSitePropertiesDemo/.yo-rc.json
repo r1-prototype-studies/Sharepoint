@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "read-site-properties-demo",
+    "libraryId": "98dbd00b-91bb-4406-ba67-2c604fec8022",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "read-site-properties-demo",
+    "solutionShortDescription": "read-site-properties-demo description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

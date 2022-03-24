@@ -6,7 +6,22 @@
 
 # Notes
 * Creating self signed certificate is a one time activity. We need not create for all the web parts
+* Folder Anatomy
+    
+    | Folder Name | Sub Folder  | Purpose                                                                                                                                      |
+    | ----------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+    | Config      |             | All the config files are present here                                                                                                        |
+    |             | Config.json | Has the web parts information along with the entrypoint and manifest. Has External library like Jquery information. Has localized resources. |
+    | src         |             | Code related files are present here                                                                                                          |
+    | teams       |             | tabs in microsoft Teams                                                                                                                      |
+* If we are using skip feature deployment (set as true), deploy the sharepoint package in the app catalog. It will ask whether it needs to be available for all the sites, if selected yes, it will be available for all the sites.
+* If we are not using skip feature deployment (set as false), deploy the sharepoint package in the app catalog. It will neither ask whether it needs to be available for all the sites and it is not available for all the sites. In order to make it available for all sites, follow the below steps:
+  *  Deploy the package to the app catalog 
+  *  We should install an app in the site collections. Go to settings and select "Add an app" 
+  *  Click on package (app) that we uploaded.
 * 
+
+
 # Steps
 1. Run the below command to create the sharepoint project in VS code
     ```
@@ -29,7 +44,16 @@
 4. In order to create additional web parts, just run the command in the same path where we ran this command before. It will know whether to create a new solution or to add a new web part.
     ```
     yo @microsoft/sharepoint
-5. 
+5. Run the below command to compile the solution
+    ```
+    gulp build
+6. Run the below command to minify the JavaScript files
+    ```
+    gulp bundle
+7. Run the below command to create sharepoint package
+    ```
+    gulp package-solution
+8. 
 
 # References
 
