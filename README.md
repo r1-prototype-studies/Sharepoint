@@ -19,6 +19,12 @@
   *  Deploy the package to the app catalog 
   *  We should install an app in the site collections. Go to settings and select "Add an app" 
   *  Click on package (app) that we uploaded.
+* Import the below modules to make REST API calls
+    ```
+    import { 
+        SPHttpClient,
+        SPHttpClientResponse
+    } from '@microsoft/sp-http'
 * 
 
 

@@ -1,4 +1,4 @@
-import { Version } from '@microsoft/sp-core-library';
+import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
@@ -10,10 +10,23 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import styles from './GetListOfListDemoWebPart.module.scss';
 import * as strings from 'GetListOfListDemoWebPartStrings';
 
+import { 
+  SPHttpClient,
+  SPHttpClientResponse
+} from '@microsoft/sp-http';
+
 export interface IGetListOfListDemoWebPartProps {
   description: string;
 }
 
+export interface ISharePointList {
+  Title: string;
+  Id: string;
+}
+
+export interface ISharePointLists{
+  value: ISharePointList[];
+}
 export default class GetListOfListDemoWebPart extends BaseClientSideWebPart<IGetListOfListDemoWebPartProps> {
 
   private _isDarkTheme: boolean = false;
@@ -23,6 +36,41 @@ export default class GetListOfListDemoWebPart extends BaseClientSideWebPart<IGet
     this._environmentMessage = this._getEnvironmentMessage();
 
     return super.onInit();
+  }
+
+  private _getListOfLists(): Promise<ISharePointLists>{
+    return this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl +`/_api/web/lists?$filter=Hidden eq false`, SPHttpClient.configurations.v1)
+      .then((response: SPHttpClientResponse) =>{
+        return response.json();
+      });
+  }
+
+  private _getAndRenderLists(): void {
+    if(Environment.type === EnvironmentType.Local){
+
+    }
+    else if(Environment.type === EnvironmentType.SharePoint || Environment.type === EnvironmentType.ClassicSharePoint){
+      this._getListOfLists().then((response) => {
+        this._renderListOfLists(response.value);
+      });
+    }
+  }
+
+  private _renderListOfLists(items: ISharePointList[]): void {
+    let html: string = '';
+
+    items.forEach((item: ISharePointList) => {
+      html += `
+      <ul>
+      <li><span class="ms-font-1">${item.Title}</span></li>
+      <li><span class="ms-font-1">${item.Id}</span></li>
+      </ul>           
+      
+      `;
+    });
+
+    const listsPlaceholder: Element = this.domElement.querySelector('#SPListPlaceHolder');
+    listsPlaceholder.innerHTML = html;
   }
 
   public render(): void {
@@ -50,7 +98,12 @@ export default class GetListOfListDemoWebPart extends BaseClientSideWebPart<IGet
             <li><a href="https://aka.ms/m365pnp" target="_blank">Microsoft 365 Developer Community</a></li>
           </ul>
       </div>
+
+      <div id="SPListPlaceHolder"></div>
+
     </section>`;
+
+    this._getAndRenderLists();
   }
 
   private _getEnvironmentMessage(): string {
