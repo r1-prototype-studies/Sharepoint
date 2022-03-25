@@ -34,6 +34,14 @@ export default class CultureInfoDetailsWebPart extends BaseClientSideWebPart<ICu
         <div>${this._environmentMessage}</div>
         <div>Web part property value: <strong>${escape(this.properties.description)}</strong></div>
       </div>
+
+      <div>
+        <ul>
+        <li> <strong>Current Culture Info: </strong> ${escape(this.context.pageContext.cultureInfo.currentCultureName)}</li>
+        <li> <strong>Current UI Culture Info: </strong> ${escape(this.context.pageContext.cultureInfo.currentUICultureName)}</li>
+        <li> <strong>IsLeftToRight?: </strong> ${this.context.pageContext.cultureInfo.isRightToLeft}</li>
+        </ul>
+      </div>
       <div>
         <h3>Welcome to SharePoint Framework!</h3>
         <p>
