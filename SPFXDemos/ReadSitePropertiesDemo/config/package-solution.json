@@ -5,7 +5,7 @@
     "id": "98dbd00b-91bb-4406-ba67-2c604fec8022",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true,
+    "skipFeatureDeployment": false,
     "isDomainIsolated": false,
     "developer": {
       "name": "",

@@ -10,8 +10,13 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import styles from './ReadSitePropertiesWebPart.module.scss';
 import * as strings from 'ReadSitePropertiesWebPartStrings';
 
+import { 
+  Environment, 
+  EnvironmentType
+} from '@microsoft/sp-core-library';
 export interface IReadSitePropertiesWebPartProps {
   description: string;
+  environmentTitle: string;
 }
 
 export default class ReadSitePropertiesWebPart extends BaseClientSideWebPart<IReadSitePropertiesWebPartProps> {
@@ -25,7 +30,25 @@ export default class ReadSitePropertiesWebPart extends BaseClientSideWebPart<IRe
     return super.onInit();
   }
 
+  private _findOutEnvironment(): void {
+    //Local environment
+    this.properties.environmentTitle = "testing"; 
+    if(Environment.type === EnvironmentType.Local) {
+      this.properties.environmentTitle = "Local SharePoint Environment";
+    }
+    else if(Environment.type === EnvironmentType.SharePoint || 
+              Environment.type === EnvironmentType.ClassicSharePoint){
+                this.properties.environmentTitle = "Online SharePoint Environment";
+    }
+    else {
+      this.properties.environmentTitle = Environment.type.toString();
+    }
+  }
+
   public render(): void {
+    
+    this._findOutEnvironment();
+
     this.domElement.innerHTML = `
     <section class="${styles.readSiteProperties} ${!!this.context.sdks.microsoftTeams ? styles.teams : ''}">
       <div class="${styles.welcome}">
@@ -34,6 +57,14 @@ export default class ReadSitePropertiesWebPart extends BaseClientSideWebPart<IRe
         <div>${this._environmentMessage}</div>
         <div>Web part property value: <strong>${escape(this.properties.description)}</strong></div>
       </div>
+
+      <div>Absolute url: ${escape(this.context.pageContext.web.absoluteUrl)}</div>
+      <div>Title: ${escape(this.context.pageContext.web.title)}</div>
+      <div>Relative url: ${escape(this.context.pageContext.web.serverRelativeUrl)}</div>
+      <div>User Name: ${escape(this.context.pageContext.user.displayName)}</div>
+      <div>EnvironmentType: ${Environment.type}</div>
+      <div>Environment: ${this.properties.environmentTitle}</div>
+
       <div>
         <h3>Welcome to SharePoint Framework!</h3>
         <p>
@@ -51,6 +82,7 @@ export default class ReadSitePropertiesWebPart extends BaseClientSideWebPart<IRe
           </ul>
       </div>
     </section>`;
+
   }
 
   private _getEnvironmentMessage(): string {
