@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "culture-info-details-client-side-solution",
+    "id": "bcfd157a-b4ff-4a1b-b620-a058badf081a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "culture-info-details description"
+      },
+      "longDescription": {
+        "default": "culture-info-details description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "culture-info-details Feature",
+        "description": "The feature that activates elements of the culture-info-details solution.",
+        "id": "ec90de9a-2373-42e5-a511-8d3351952439",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/culture-info-details.sppkg"
+  }
+}

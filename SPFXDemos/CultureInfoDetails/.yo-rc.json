@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "culture-info-details",
+    "libraryId": "bcfd157a-b4ff-4a1b-b620-a058badf081a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "culture-info-details",
+    "solutionShortDescription": "culture-info-details description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
