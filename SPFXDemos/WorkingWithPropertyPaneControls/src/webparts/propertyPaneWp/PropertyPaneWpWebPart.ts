@@ -12,6 +12,15 @@ import * as strings from 'PropertyPaneWpWebPartStrings';
 
 export interface IPropertyPaneWpWebPartProps {
   description: string;
+
+  productName: string;
+  productDescription: string;
+  productCost: number;
+  quantity: number;
+  billAmount: number;
+  discount: number;
+  netBillAmount: number;
+
 }
 
 export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IPropertyPaneWpWebPartProps> {
@@ -80,19 +89,71 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
     return Version.parse('1.0');
   }
 
+  // protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+  //   return {
+  //     pages: [
+  //       {
+  //         header: {
+  //           description: "Propery Values"
+  //         },
+  //         groups: [
+  //           {
+  //             groupName: "Grouping",
+  //             groupFields: [
+  //               PropertyPaneTextField('description', {
+  //                 label: strings.DescriptionFieldLabel
+  //               })
+  //             ]
+  //           },
+  //           {
+  //             groupName: "Section",
+  //             groupFields: [
+  //               PropertyPaneTextField('description', {
+  //                 label: "Test"
+  //               })
+  //             ]
+  //           }
+  //         ]
+  //       }
+  //     ]
+  //   };
+  //} 
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return {
+    return{
       pages: [
         {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: "Product details",
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('productName',{
+                  label: "Product Name",
+                  multiline: false,
+                  resizable: false,
+                  deferredValidationTime: 5000,
+                  placeholder: "Please enter product name","description": "Name property field"
+                }),
+                PropertyPaneTextField('productDescription',{
+                  label: "Product Description",
+                  multiline: true,
+                  resizable: false,
+                  deferredValidationTime: 5000,
+                  placeholder: "Please enter product description","description": "Name property field"
+                }),
+                PropertyPaneTextField('productCost',{
+                  label: "Product Cost",
+                  multiline: false,
+                  resizable: false,
+                  deferredValidationTime: 5000,
+                  placeholder: "Please enter product cost","description": "Name property field"
+                }),
+                PropertyPaneTextField('quantity',{
+                  label: "Quantity",
+                  multiline: false,
+                  resizable: false,
+                  deferredValidationTime: 5000,
+                  placeholder: "Please enter quantity","description": "Name property field"
                 })
               ]
             }
