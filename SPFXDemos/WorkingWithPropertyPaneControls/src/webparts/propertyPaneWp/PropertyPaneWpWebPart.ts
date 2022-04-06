@@ -5,6 +5,7 @@ import {
   PropertyPaneToggle,
   PropertyPaneSlider,
   PropertyPaneChoiceGroup,
+  PropertyPaneDropdown,
 } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
@@ -29,6 +30,7 @@ export interface IPropertyPaneWpWebPartProps {
   rating: number;
   processorType: string;
   invoiceFileType: string;
+  newProcessorType: string;
 }
 
 export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IPropertyPaneWpWebPartProps> {
@@ -104,6 +106,10 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
           <tr>
             <td>Invoice file type</td>
             <td>${this.properties.invoiceFileType}</td>
+          </tr>
+          <tr>
+            <td>New Processor Type</td>
+            <td>${this.properties.newProcessorType}</td>
           </tr>
         </table>
       </div>
@@ -266,6 +272,15 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
                       imageSize: { width: 32, height: 32 },
                     },
                   ],
+                }),
+                PropertyPaneDropdown("newProcessorType", {
+                  label: "New Processor Type",
+                  options: [
+                    { key: "I5", text: "Intel I5" },
+                    { key: "I7", text: "Intel I7" },
+                    { key: "I9", text: "Intel I9" },
+                  ],
+                  selectedKey: "I7",
                 }),
               ],
             },
