@@ -38,6 +38,10 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
     return super.onInit();
   }
 
+  protected get disableReactivePropertyChanges(): boolean {
+      return true;
+  }
+
   public render(): void {
     this.domElement.innerHTML = `
     <section class="${styles.propertyPaneWp} ${!!this.context.sdks.microsoftTeams ? styles.teams : ''}">

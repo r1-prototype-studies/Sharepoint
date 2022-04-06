@@ -27,6 +27,12 @@
     } from '@microsoft/sp-http'
 * If you make any changes to the manifest.json file, you should stop the gulp server and start for the changes.
 * The best place to assign default values is within init function.
+* To disable reactive changes from propertypane, add the below method, by default this value is false.
+    ```
+    protected get disableReactivePropertyChanges(): boolean {
+      return true;
+    }
+* 
 
 
 # Steps
