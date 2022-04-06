@@ -92,14 +92,14 @@ export default class MultiPartGroupsDemoWebPart extends BaseClientSideWebPart<IM
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription,
+            description: "Page 1",
           },
           groups: [
             {
               groupName: "First Group",
               groupFields: [
                 PropertyPaneTextField("productName", {
-                  label: "Product Name",
+                  label: "Product Name 1",
                 }),
               ],
             },
@@ -107,7 +107,55 @@ export default class MultiPartGroupsDemoWebPart extends BaseClientSideWebPart<IM
               groupName: "Second Group",
               groupFields: [
                 PropertyPaneToggle("isCertified", {
-                  label: "Is Certified?",
+                  label: "Is Certified 1?",
+                }),
+              ],
+            },
+          ],
+          displayGroupsAsAccordion: true,
+        },
+        {
+          header: {
+            description: "Page 2",
+          },
+          groups: [
+            {
+              groupName: "First Group",
+              groupFields: [
+                PropertyPaneTextField("productName", {
+                  label: "Product Name 2",
+                }),
+              ],
+            },
+            {
+              groupName: "Second Group",
+              groupFields: [
+                PropertyPaneToggle("isCertified", {
+                  label: "Is Certified 2?",
+                }),
+              ],
+            },
+          ],
+          displayGroupsAsAccordion: true,
+        },
+        {
+          header: {
+            description: "Page 3",
+          },
+          groups: [
+            {
+              groupName: "First Group",
+              groupFields: [
+                PropertyPaneTextField("productName", {
+                  label: "Product Name 3",
+                }),
+              ],
+            },
+            {
+              groupName: "Second Group",
+              groupFields: [
+                PropertyPaneToggle("isCertified", {
+                  label: "Is Certified 3?",
                 }),
               ],
             },
