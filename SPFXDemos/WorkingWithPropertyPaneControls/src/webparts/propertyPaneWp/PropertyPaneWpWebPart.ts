@@ -3,7 +3,8 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneToggle,
-  PropertyPaneSlider
+  PropertyPaneSlider,
+  PropertyPaneChoiceGroup
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -26,6 +27,7 @@ export interface IPropertyPaneWpWebPartProps {
   currentTime: Date;
   isCertified: boolean;
   rating: number;
+  processorType: string;
 }
 
 export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IPropertyPaneWpWebPartProps> {
@@ -41,6 +43,7 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
     this.properties.productCost = 50;
     this.properties.quantity = 12;
     this.properties.isCertified = false;
+    this.properties.rating = 1;
     return super.onInit();
   }
 
@@ -88,6 +91,10 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
           <tr>
             <td>Rating</td>
             <td>${this.properties.rating}</td>
+          </tr>
+          <tr>
+            <td>Processor Type</td>
+            <td>${this.properties.processorType}</td>
           </tr>
         </table>
       </div>
@@ -200,6 +207,14 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
                   step: 0.5,
                   showValue: true,
                   value:1
+                }),
+                PropertyPaneChoiceGroup('processorType',{
+                  label: 'Choices',
+                  options: [
+                    { key: 'I5', text: 'Intel I5'},
+                    { key: 'I7', text: 'Intel I7', checked: true},
+                    { key: 'I9', text: 'Intel I9'},
+                  ]
                 })
               ]
             }
