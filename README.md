@@ -32,6 +32,7 @@
     protected get disableReactivePropertyChanges(): boolean {
       return true;
     }
+* To change the icon of the web part, change "officeFabricIconFontName" in the manifest file for an icon from office (refer link#1 in references) or use iconImageUrl for an image from internet.
 * 
 
 
@@ -69,6 +70,7 @@
 8. 
 
 # References
-
+* https://developer.microsoft.com/en-us/fluentui#/styles/web/icons
+* https://www.base64-image.de/
 
 
