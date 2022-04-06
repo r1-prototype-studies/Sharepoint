@@ -1,7 +1,8 @@
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -21,6 +22,8 @@ export interface IPropertyPaneWpWebPartProps {
   discount: number;
   netBillAmount: number;
 
+  currentTime: Date;
+  isCertified: boolean;
 }
 
 export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IPropertyPaneWpWebPartProps> {
@@ -35,6 +38,7 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
     this.properties.productDescription = "mouse product description";
     this.properties.productCost = 50;
     this.properties.quantity = 12;
+    this.properties.isCertified = false;
     return super.onInit();
   }
 
@@ -74,6 +78,10 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
           <tr>
             <td>Net Nill Amount</td>
             <td>${this.properties.netBillAmount = this.properties.billAmount - this.properties.discount}</td>
+          </tr>
+          <tr>
+            <td>Is Certified?</td>
+            <td>${this.properties.isCertified}</td>
           </tr>
         </table>
       </div>
@@ -172,6 +180,12 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
                   resizable: false,
                   deferredValidationTime: 5000,
                   placeholder: "Please enter quantity","description": "Name property field"
+                }),
+                PropertyPaneToggle('isCertified',{
+                  label: "Is it certified?",
+                  key: "isCertified",
+                  onText : "ISI certified!",
+                  offText: "Not an ISI certified Product"
                 })
               ]
             }
