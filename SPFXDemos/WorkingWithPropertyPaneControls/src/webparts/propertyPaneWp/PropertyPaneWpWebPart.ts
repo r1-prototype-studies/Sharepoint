@@ -2,7 +2,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneToggle
+  PropertyPaneToggle,
+  PropertyPaneSlider
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -24,6 +25,7 @@ export interface IPropertyPaneWpWebPartProps {
 
   currentTime: Date;
   isCertified: boolean;
+  rating: number;
 }
 
 export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IPropertyPaneWpWebPartProps> {
@@ -43,7 +45,7 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
   }
 
   protected get disableReactivePropertyChanges(): boolean {
-      return true;
+      return false;
   }
 
   public render(): void {
@@ -82,6 +84,10 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
           <tr>
             <td>Is Certified?</td>
             <td>${this.properties.isCertified}</td>
+          </tr>
+          <tr>
+            <td>Rating</td>
+            <td>${this.properties.rating}</td>
           </tr>
         </table>
       </div>
@@ -186,6 +192,14 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
                   key: "isCertified",
                   onText : "ISI certified!",
                   offText: "Not an ISI certified Product"
+                }),
+                PropertyPaneSlider('rating',{
+                  label: "Select your rating",
+                  min:0.5,
+                  max: 10,
+                  step: 0.5,
+                  showValue: true,
+                  value:1
                 })
               ]
             }
