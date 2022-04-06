@@ -31,6 +31,10 @@ export default class PropertyPaneWpWebPart extends BaseClientSideWebPart<IProper
   protected onInit(): Promise<void> {
     this._environmentMessage = this._getEnvironmentMessage();
 
+    this.properties.productName = "Mouse";
+    this.properties.productDescription = "mouse product description";
+    this.properties.productCost = 50;
+    this.properties.quantity = 12;
     return super.onInit();
   }
 
