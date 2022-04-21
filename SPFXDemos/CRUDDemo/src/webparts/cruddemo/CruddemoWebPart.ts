@@ -110,6 +110,50 @@ export default class CruddemoWebPart extends BaseClientSideWebPart<ICruddemoWebP
       .addEventListener("click", () => {
         this.updateListItem();
       });
+
+    this.domElement
+      .querySelector("#btnDelete")
+      .addEventListener("click", () => {
+        this.deleteListItem();
+      });
+  }
+  private deleteListItem() {
+    let id: string = document.getElementById("txtID")["value"];
+
+    const siteUrl: string =
+      this.context.pageContext.site.absoluteUrl +
+      "/_api/web/lists/getbytitle('SampleList')/items(" +
+      id +
+      ")";
+
+    const headers: any = {
+      "X-HTTP-Method": "DELETE",
+      "IF-MATCH": "*",
+    };
+
+    const spHttpClientOptions: ISPHttpClientOptions = {
+      headers: headers,
+    };
+
+    this.context.spHttpClient
+      .post(siteUrl, SPHttpClient.configurations.v1, spHttpClientOptions)
+      .then((response: SPHttpClientResponse) => {
+        const statusMessage: Element =
+          this.domElement.querySelector("#divStatus");
+        if (response.status === 204) {
+          statusMessage.innerHTML = "List Item has been deleted successfully.";
+        } else {
+          statusMessage.innerHTML =
+            "An error has occurred: " +
+            response.status +
+            " - " +
+            response.statusText +
+            " ";
+          response.json().then((res) => {
+            statusMessage.innerHTML += JSON.stringify(res);
+          });
+        }
+      });
   }
 
   private updateListItem(): void {
