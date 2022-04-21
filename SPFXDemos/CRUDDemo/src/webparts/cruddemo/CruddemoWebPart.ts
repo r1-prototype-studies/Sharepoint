@@ -116,7 +116,53 @@ export default class CruddemoWebPart extends BaseClientSideWebPart<ICruddemoWebP
       .addEventListener("click", () => {
         this.deleteListItem();
       });
+
+    this.domElement
+      .querySelector("#btnReadAll")
+      .addEventListener("click", () => {
+        this.ReadAllItems();
+      });
   }
+
+  private ReadAllItems(): void {
+    this._getListItems().then((listItems) => {
+      let html: string =
+        '<table border=1 width=100% style="border-collapse: collapse;">';
+      html +=
+        "<th>Title</th> <th>Vendor</th><th>Description</th><th>Name</th><th>Version</th>";
+
+      listItems.forEach((listItem) => {
+        html += `<tr>            
+      <td>${listItem.Title}</td>
+      <td>${listItem.SoftwareVendor}</td>
+      <td>${listItem.SoftwareDescription}</td>
+      <td>${listItem.SoftwareName}</td>
+      <td>${listItem.SoftwareVersion}</td>      
+      </tr>`;
+      });
+      html += "</table>";
+      const listContainer: Element =
+        this.domElement.querySelector("#divStatus");
+
+      listContainer.innerHTML = html;
+    });
+  }
+
+  private _getListItems(): Promise<ISoftwareListItem[]> {
+    const siteUrl: string =
+      this.context.pageContext.site.absoluteUrl +
+      "/_api/web/lists/getbytitle('SampleList')/items";
+
+    return this.context.spHttpClient
+      .get(siteUrl, SPHttpClient.configurations.v1)
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        return json.value;
+      }) as Promise<ISoftwareListItem[]>;
+  }
+
   private deleteListItem() {
     let id: string = document.getElementById("txtID")["value"];
 
