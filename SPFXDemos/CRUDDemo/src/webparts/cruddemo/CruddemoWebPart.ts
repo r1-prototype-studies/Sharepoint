@@ -104,6 +104,71 @@ export default class CruddemoWebPart extends BaseClientSideWebPart<ICruddemoWebP
     this.domElement.querySelector("#btnRead").addEventListener("click", () => {
       this.readListItem();
     });
+
+    this.domElement
+      .querySelector("#btnUpdate")
+      .addEventListener("click", () => {
+        this.updateListItem();
+      });
+  }
+
+  private updateListItem(): void {
+    var softwaretitle = document.getElementById("txtSoftwareTitle")["value"];
+    var softwarename = document.getElementById("txtSoftwareName")["value"];
+    var softwareversion =
+      document.getElementById("txtSoftwareVersion")["value"];
+    var softwarevendor = document.getElementById("ddlSoftwareVendor")["value"];
+    var softwareDescription = document.getElementById("txtSoftwareDescription")[
+      "value"
+    ];
+
+    let id: string = document.getElementById("txtID")["value"];
+
+    const siteUrl: string =
+      this.context.pageContext.site.absoluteUrl +
+      "/_api/web/lists/getbytitle('SampleList')/items(" +
+      id +
+      ")";
+
+    alert(siteUrl);
+    const itemBody: any = {
+      Title: softwaretitle,
+      SoftwareVendor: softwarevendor,
+      SoftwareDescription: softwareDescription,
+      SoftwareName: softwarename,
+      SoftwareVersion: softwareversion,
+    };
+
+    const headers: any = {
+      "X-HTTP_Method": "MERGE",
+      "IF-MATCH": "*",
+    };
+
+    const spHttpClientOptions: ISPHttpClientOptions = {
+      body: JSON.stringify(itemBody),
+      headers: headers,
+    };
+
+    //alert(JSON.stringify(itemBody));
+    this.context.spHttpClient
+      .post(siteUrl, SPHttpClient.configurations.v1, spHttpClientOptions)
+      .then((response: SPHttpClientResponse) => {
+        const statusMessage: Element =
+          this.domElement.querySelector("#divStatus");
+        if (response.status === 204) {
+          statusMessage.innerHTML = "List Item has been updated successfully.";
+        } else {
+          statusMessage.innerHTML =
+            "An error has occurred: " +
+            response.status +
+            " - " +
+            response.statusText +
+            " ";
+          response.json().then((res) => {
+            statusMessage.innerHTML += JSON.stringify(res);
+          });
+        }
+      });
   }
 
   private readListItem(): void {
