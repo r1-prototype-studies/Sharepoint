@@ -71,6 +71,10 @@
 8. To install sppnpjs library, run the following command
    ```
    npm install sp-pnp-js --save
+9. To debug custom library, link it using the below command
+    ```
+    npm link
+    
 
 # References
 * https://developer.microsoft.com/en-us/fluentui#/styles/web/icons
