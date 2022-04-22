@@ -126,12 +126,35 @@ export default class SppnpjscruddemoWebPart extends BaseClientSideWebPart<ISppnp
   deleteListItem() {
     throw new Error("Method not implemented.");
   }
-  updateListItem() {
-    throw new Error("Method not implemented.");
+  private updateListItem(): void {
+    var softwaretitle = document.getElementById("txtSoftwareTitle")["value"];
+    var softwarename = document.getElementById("txtSoftwareName")["value"];
+    var softwareversion =
+      document.getElementById("txtSoftwareVersion")["value"];
+    var softwarevendor = document.getElementById("ddlSoftwareVendor")["value"];
+    var softwareDescription = document.getElementById("txtSoftwareDescription")[
+      "value"
+    ];
+
+    let id: number = document.getElementById("txtID")["value"];
+
+    pnp.sp.web.lists
+      .getByTitle("SampleList")
+      .items.getById(id)
+      .update({
+        Title: softwaretitle,
+        SoftwareVendor: softwarevendor,
+        SoftwareDescription: softwareDescription,
+        SoftwareName: softwarename,
+        SoftwareVersion: softwareversion,
+      })
+      .then((r) => {
+        alert("Success");
+      });
   }
 
   private readListItem(): void {
-    const id = document.getElementById("txtID")["value"];
+    const id: number = document.getElementById("txtID")["value"];
 
     pnp.sp.web.lists
       .getByTitle("SampleList")
