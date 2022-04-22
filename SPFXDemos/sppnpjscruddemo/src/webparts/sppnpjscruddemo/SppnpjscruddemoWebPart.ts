@@ -120,8 +120,32 @@ export default class SppnpjscruddemoWebPart extends BaseClientSideWebPart<ISppnp
         this.readAllItems();
       });
   }
-  readAllItems() {
-    throw new Error("Method not implemented.");
+
+  private readAllItems(): void {
+    pnp.sp.web.lists
+      .getByTitle("SampleList")
+      .items.get()
+      .then((listItems: any[]) => {
+        let html: string =
+          '<table border=1 width=100% style="border-collapse: collapse;">';
+        html +=
+          "<th>Title</th> <th>Vendor</th><th>Description</th><th>Name</th><th>Version</th>";
+
+        listItems.forEach((listItem) => {
+          html += `<tr>            
+      <td>${listItem.Title}</td>
+      <td>${listItem.SoftwareVendor}</td>
+      <td>${listItem.SoftwareDescription}</td>
+      <td>${listItem.SoftwareName}</td>
+      <td>${listItem.SoftwareVersion}</td>      
+      </tr>`;
+        });
+        html += "</table>";
+        const listContainer: Element =
+          this.domElement.querySelector("#spListData");
+
+        listContainer.innerHTML = html;
+      });
   }
   deleteListItem() {
     throw new Error("Method not implemented.");
