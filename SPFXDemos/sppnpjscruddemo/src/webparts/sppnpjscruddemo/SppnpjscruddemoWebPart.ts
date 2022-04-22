@@ -97,6 +97,57 @@ export default class SppnpjscruddemoWebPart extends BaseClientSideWebPart<ISppnp
       .addEventListener("click", () => {
         this.addListItem();
       });
+
+    this.domElement.querySelector("#btnRead").addEventListener("click", () => {
+      this.readListItem();
+    });
+
+    this.domElement
+      .querySelector("#btnUpdate")
+      .addEventListener("click", () => {
+        this.updateListItem();
+      });
+
+    this.domElement
+      .querySelector("#btnDelete")
+      .addEventListener("click", () => {
+        this.deleteListItem();
+      });
+
+    this.domElement
+      .querySelector("#btnReadAll")
+      .addEventListener("click", () => {
+        this.readAllItems();
+      });
+  }
+  readAllItems() {
+    throw new Error("Method not implemented.");
+  }
+  deleteListItem() {
+    throw new Error("Method not implemented.");
+  }
+  updateListItem() {
+    throw new Error("Method not implemented.");
+  }
+
+  private readListItem(): void {
+    const id = document.getElementById("txtID")["value"];
+
+    pnp.sp.web.lists
+      .getByTitle("SampleList")
+      .items.getById(id)
+      .get()
+      .then((item: any) => {
+        document.getElementById("txtSoftwareTitle")["value"] = item["Title"];
+        document.getElementById("ddlSoftwareVendor")["value"] =
+          item["SoftwareVendor"];
+        document.getElementById("txtSoftwareDescription")["value"] =
+          item["SoftwareDescription"];
+        document.getElementById("txtSoftwareName")["value"] =
+          item["SoftwareName"];
+        document.getElementById("txtSoftwareVersion")["value"] =
+          item["SoftwareVersion"];
+      });
   }
 
   private addListItem(): void {
@@ -108,10 +159,6 @@ export default class SppnpjscruddemoWebPart extends BaseClientSideWebPart<ISppnp
     var softwareDescription = document.getElementById("txtSoftwareDescription")[
       "value"
     ];
-
-    const siteUrl: string =
-      this.context.pageContext.site.absoluteUrl +
-      "/_api/web/lists/getbytitle('SampleList')/items";
 
     pnp.sp.web.lists
       .getByTitle("SampleList")
