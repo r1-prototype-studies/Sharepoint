@@ -67,7 +67,9 @@
 7. Run the below command to create sharepoint package
     ```
     gulp package-solution
-8. 
+8. To install sppnpjs library, run the following command
+   ```
+   npm install sp-pnp-js --save
 
 # References
 * https://developer.microsoft.com/en-us/fluentui#/styles/web/icons

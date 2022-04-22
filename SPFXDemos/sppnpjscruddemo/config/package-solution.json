@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sppnpjscruddemo-client-side-solution",
+    "id": "9fe33b3d-c228-47b9-8885-94a35ff49acc",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "sppnpjscruddemo description"
+      },
+      "longDescription": {
+        "default": "sppnpjscruddemo description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "sppnpjscruddemo Feature",
+        "description": "The feature that activates elements of the sppnpjscruddemo solution.",
+        "id": "87da39fa-dd34-4e8b-992e-e150c553aa6f",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/sppnpjscruddemo.sppkg"
+  }
+}
