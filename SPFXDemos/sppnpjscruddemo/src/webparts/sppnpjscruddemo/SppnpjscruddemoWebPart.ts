@@ -1,23 +1,23 @@
-import { Version } from '@microsoft/sp-core-library';
+import { Version } from "@microsoft/sp-core-library";
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-property-pane';
-import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { IReadonlyTheme } from '@microsoft/sp-component-base';
-import { escape } from '@microsoft/sp-lodash-subset';
+  PropertyPaneTextField,
+} from "@microsoft/sp-property-pane";
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IReadonlyTheme } from "@microsoft/sp-component-base";
+import { escape } from "@microsoft/sp-lodash-subset";
 
-import styles from './SppnpjscruddemoWebPart.module.scss';
-import * as strings from 'SppnpjscruddemoWebPartStrings';
+import styles from "./SppnpjscruddemoWebPart.module.scss";
+import * as strings from "SppnpjscruddemoWebPartStrings";
+import * as pnp from "sp-pnp-js";
 
 export interface ISppnpjscruddemoWebPartProps {
   description: string;
 }
 
 export default class SppnpjscruddemoWebPart extends BaseClientSideWebPart<ISppnpjscruddemoWebPartProps> {
-
   private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = '';
+  private _environmentMessage: string = "";
 
   protected onInit(): Promise<void> {
     this._environmentMessage = this._getEnvironmentMessage();
@@ -26,39 +26,118 @@ export default class SppnpjscruddemoWebPart extends BaseClientSideWebPart<ISppnp
   }
 
   public render(): void {
-    this.domElement.innerHTML = `
-    <section class="${styles.sppnpjscruddemo} ${!!this.context.sdks.microsoftTeams ? styles.teams : ''}">
-      <div class="${styles.welcome}">
-        <img alt="" src="${this._isDarkTheme ? require('./assets/welcome-dark.png') : require('./assets/welcome-light.png')}" class="${styles.welcomeImage}" />
-        <h2>Well done, ${escape(this.context.pageContext.user.displayName)}!</h2>
-        <div>${this._environmentMessage}</div>
-        <div>Web part property value: <strong>${escape(this.properties.description)}</strong></div>
-      </div>
-      <div>
-        <h3>Welcome to SharePoint Framework!</h3>
-        <p>
-        The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It's the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-        </p>
-        <h4>Learn more about SPFx development:</h4>
-          <ul class="${styles.links}">
-            <li><a href="https://aka.ms/spfx" target="_blank">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank">Microsoft 365 Developer Community</a></li>
-          </ul>
-      </div>
-    </section>`;
+    this.domElement.innerHTML = `    
+    <div>
+    <div>
+    <table border='5' bgcolor='aqua'>
+      <tr>
+      <td>Please Enter Software ID </td>
+      <td><input type='text' id='txtID' />
+      <td><input type='submit' id='btnRead' value='Read Details' />
+      </td>
+      </tr>
+      <tr>
+      <td>Software Title</td>
+      <td><input type='text' id='txtSoftwareTitle' />
+      </tr>
+
+      <tr>
+      <td>Software Name</td>
+      <td><input type='text' id='txtSoftwareName' />
+      </tr>
+
+      <tr>
+      <td>Software Vendor</td>
+      <td>
+      <select id="ddlSoftwareVendor">
+        <option value="Microsoft">Microsoft</option>
+        <option value="Sun">Sun</option>
+        <option value="Oracle">Oracle</option>
+        <option value="Google">Google</option>
+      </select>  
+      </td>
+     
+      </tr>
+
+      <tr>
+      <td>Software Version</td>
+      <td><input type='text' id='txtSoftwareVersion' />
+      </tr>
+
+      <tr>
+      <td>Software Description</td>
+      <td><textarea rows='5' cols='40' id='txtSoftwareDescription'> </textarea> </td>
+      </tr>
+
+      <tr>
+      <td colspan='2' align='center'>
+      <input type='submit'  value='Insert Item' id='btnSubmit' />
+      <input type='submit'  value='Update' id='btnUpdate' />
+      <input type='submit'  value='Delete' id='btnDelete' />
+      <input type='submit'  value='Show All Records' id='btnReadAll' />
+      </td>
+    </table>
+    </div>
+    <div id="divStatus"/>
+
+    <h2>Get All List Items</h2>
+    <hr/>
+    <div id="spListData" />
+
+
+    </div>
+    `;
+
+    this._bindEvents();
+  }
+
+  private _bindEvents(): void {
+    this.domElement
+      .querySelector("#btnSubmit")
+      .addEventListener("click", () => {
+        this.addListItem();
+      });
+  }
+
+  private addListItem(): void {
+    var softwaretitle = document.getElementById("txtSoftwareTitle")["value"];
+    var softwarename = document.getElementById("txtSoftwareName")["value"];
+    var softwareversion =
+      document.getElementById("txtSoftwareVersion")["value"];
+    var softwarevendor = document.getElementById("ddlSoftwareVendor")["value"];
+    var softwareDescription = document.getElementById("txtSoftwareDescription")[
+      "value"
+    ];
+
+    const siteUrl: string =
+      this.context.pageContext.site.absoluteUrl +
+      "/_api/web/lists/getbytitle('SampleList')/items";
+
+    pnp.sp.web.lists
+      .getByTitle("SampleList")
+      .items.add({
+        Title: softwaretitle,
+        SoftwareVendor: softwarevendor,
+        SoftwareDescription: softwareDescription,
+        SoftwareName: softwarename,
+        SoftwareVersion: softwareversion,
+      })
+      .then((r) => {
+        alert("Success");
+      });
   }
 
   private _getEnvironmentMessage(): string {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams
-      return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
+    if (!!this.context.sdks.microsoftTeams) {
+      // running in Teams
+      return this.context.isServedFromLocalhost
+        ? strings.AppLocalEnvironmentTeams
+        : strings.AppTeamsTabEnvironment;
     }
 
-    return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment;
+    return this.context.isServedFromLocalhost
+      ? strings.AppLocalEnvironmentSharePoint
+      : strings.AppSharePointEnvironment;
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
@@ -67,17 +146,17 @@ export default class SppnpjscruddemoWebPart extends BaseClientSideWebPart<ISppnp
     }
 
     this._isDarkTheme = !!currentTheme.isInverted;
-    const {
-      semanticColors
-    } = currentTheme;
-    this.domElement.style.setProperty('--bodyText', semanticColors.bodyText);
-    this.domElement.style.setProperty('--link', semanticColors.link);
-    this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered);
-
+    const { semanticColors } = currentTheme;
+    this.domElement.style.setProperty("--bodyText", semanticColors.bodyText);
+    this.domElement.style.setProperty("--link", semanticColors.link);
+    this.domElement.style.setProperty(
+      "--linkHovered",
+      semanticColors.linkHovered
+    );
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.0');
+    return Version.parse("1.0");
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -85,20 +164,20 @@ export default class SppnpjscruddemoWebPart extends BaseClientSideWebPart<ISppnp
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: strings.PropertyPaneDescription,
           },
           groups: [
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
-        }
-      ]
+                PropertyPaneTextField("description", {
+                  label: strings.DescriptionFieldLabel,
+                }),
+              ],
+            },
+          ],
+        },
+      ],
     };
   }
 }
