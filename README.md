@@ -74,7 +74,10 @@
 9. To debug custom library, link it using the below command
     ```
     npm link
-    
+10. use the below command to use the above custom library
+    ```
+    npm link <<customLibraryName>>
+
 
 # References
 * https://developer.microsoft.com/en-us/fluentui#/styles/web/icons

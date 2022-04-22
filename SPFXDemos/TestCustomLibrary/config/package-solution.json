@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "test-custom-library-client-side-solution",
+    "id": "d7bc82bc-ed00-4611-8197-df3ea4c1a9ad",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "test-custom-library description"
+      },
+      "longDescription": {
+        "default": "test-custom-library description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "test-custom-library Feature",
+        "description": "The feature that activates elements of the test-custom-library solution.",
+        "id": "1b7fbba9-f097-486c-bfc9-9a7f33f09735",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/test-custom-library.sppkg"
+  }
+}
