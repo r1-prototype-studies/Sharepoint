@@ -1,0 +1,10 @@
+    <ListInstance 
+    CustomSchema="schema.xml"
+    FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+    Title="New List"    
+    Description="Microsoft software"
+    TemplateType="100" 
+    Url="Lists/NewList" 
+    >
+    
+  </ListInstance>

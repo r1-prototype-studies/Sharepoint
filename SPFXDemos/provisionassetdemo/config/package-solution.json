@@ -3,7 +3,7 @@
   "solution": {
     "name": "provisionassetdemo-client-side-solution",
     "id": "0b2612f5-c587-41a4-aa58-c5c93eed6dfc",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -30,10 +30,11 @@
         "title": "provisionassetdemo Feature",
         "description": "The feature that activates elements of the provisionassetdemo solution.",
         "id": "d950410e-73ea-48de-9d0c-7608c3a22cc6",
-        "version": "1.0.0.0",
+        "version": "2.0.0.0",
         "assets": {
-          "elementManifests": ["elements.xml"],
-          "elementFiles": ["schema.xml"]
+          "elementManifests": ["elements.xml", "elements-v2.xml"],
+          "elementFiles": ["schema.xml"],
+          "upgradeActions": ["upgrade-actions-v2.xml"]
         }
       }
     ]
