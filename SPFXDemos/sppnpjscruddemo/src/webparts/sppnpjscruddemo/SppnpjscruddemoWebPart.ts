@@ -147,9 +147,14 @@ export default class SppnpjscruddemoWebPart extends BaseClientSideWebPart<ISppnp
         listContainer.innerHTML = html;
       });
   }
-  deleteListItem() {
-    throw new Error("Method not implemented.");
+
+  private deleteListItem(): void {
+    let id: number = document.getElementById("txtID")["value"];
+
+    pnp.sp.web.lists.getByTitle("SampleList").items.getById(id).delete();
+    alert("item is deleted");
   }
+
   private updateListItem(): void {
     var softwaretitle = document.getElementById("txtSoftwareTitle")["value"];
     var softwarename = document.getElementById("txtSoftwareName")["value"];
