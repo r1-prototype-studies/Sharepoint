@@ -1,0 +1,17 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "field-extension-demo",
+    "libraryId": "fbfe3dfd-85ad-48e4-8aec-bb5eb1765963",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "field-extension-demo",
+    "solutionShortDescription": "field-extension-demo description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "extension",
+    "extensionType": "FieldCustomizer"
+  }
+}
