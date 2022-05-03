@@ -9,7 +9,8 @@
         "70558830-1b58-476a-9f72-e64b96d87396": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "Top": "Header of the page",
+            "Bottom": "Footer of the page"
           }
         }
       }
@@ -20,7 +21,8 @@
         "70558830-1b58-476a-9f72-e64b96d87396": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "Top": "Header of the page",
+            "Bottom": "Footer of the page"
           }
         }
       }
