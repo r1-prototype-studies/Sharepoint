@@ -1,12 +1,10 @@
-import { Log } from '@microsoft/sp-core-library';
-import {
-  BaseApplicationCustomizer
-} from '@microsoft/sp-application-base';
-import { Dialog } from '@microsoft/sp-dialog';
+import { Log } from "@microsoft/sp-core-library";
+import { BaseApplicationCustomizer } from "@microsoft/sp-application-base";
+import { Dialog } from "@microsoft/sp-dialog";
 
-import * as strings from 'AcDemoApplicationCustomizerStrings';
+import * as strings from "AcDemoApplicationCustomizerStrings";
 
-const LOG_SOURCE: string = 'AcDemoApplicationCustomizer';
+const LOG_SOURCE: string = "AcDemoApplicationCustomizer";
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -19,15 +17,14 @@ export interface IAcDemoApplicationCustomizerProperties {
 }
 
 /** A Custom Action which can be run during execution of a Client Side Application */
-export default class AcDemoApplicationCustomizer
-  extends BaseApplicationCustomizer<IAcDemoApplicationCustomizerProperties> {
-
+export default class AcDemoApplicationCustomizer extends BaseApplicationCustomizer<IAcDemoApplicationCustomizerProperties> {
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
     let message: string = this.properties.testMessage;
+
     if (!message) {
-      message = '(No properties were provided.)';
+      message = "(No properties were provided.)";
     }
 
     Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`);

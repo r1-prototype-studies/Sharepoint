@@ -4,7 +4,7 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://eswscake.sharepoint.com/sites/eswsdemo/SitePages/Demo.aspx",
       "customActions": {
         "70558830-1b58-476a-9f72-e64b96d87396": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -15,7 +15,7 @@
       }
     },
     "acDemo": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://eswscake.sharepoint.com/sites/eswsdemo/SitePages/Demo.aspx",
       "customActions": {
         "70558830-1b58-476a-9f72-e64b96d87396": {
           "location": "ClientSideExtension.ApplicationCustomizer",
