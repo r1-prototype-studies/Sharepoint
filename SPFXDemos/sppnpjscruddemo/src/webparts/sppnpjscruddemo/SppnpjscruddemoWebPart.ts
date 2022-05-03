@@ -22,7 +22,11 @@ export default class SppnpjscruddemoWebPart extends BaseClientSideWebPart<ISppnp
   protected onInit(): Promise<void> {
     this._environmentMessage = this._getEnvironmentMessage();
 
-    return super.onInit();
+    return super.onInit().then((_) => {
+      pnp.setup({
+        spfxContext: this.context,
+      });
+    });
   }
 
   public render(): void {
