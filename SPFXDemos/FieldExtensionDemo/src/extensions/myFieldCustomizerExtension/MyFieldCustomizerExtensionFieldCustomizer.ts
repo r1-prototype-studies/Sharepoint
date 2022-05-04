@@ -1,11 +1,11 @@
-import { Log } from '@microsoft/sp-core-library';
+import { Log } from "@microsoft/sp-core-library";
 import {
   BaseFieldCustomizer,
-  IFieldCustomizerCellEventParameters
-} from '@microsoft/sp-listview-extensibility';
+  IFieldCustomizerCellEventParameters,
+} from "@microsoft/sp-listview-extensibility";
 
-import * as strings from 'MyFieldCustomizerExtensionFieldCustomizerStrings';
-import styles from './MyFieldCustomizerExtensionFieldCustomizer.module.scss';
+import * as strings from "MyFieldCustomizerExtensionFieldCustomizerStrings";
+import styles from "./MyFieldCustomizerExtensionFieldCustomizer.module.scss";
 
 /**
  * If your field customizer uses the ClientSideComponentProperties JSON input,
@@ -17,27 +17,35 @@ export interface IMyFieldCustomizerExtensionFieldCustomizerProperties {
   sampleText?: string;
 }
 
-const LOG_SOURCE: string = 'MyFieldCustomizerExtensionFieldCustomizer';
+const LOG_SOURCE: string = "MyFieldCustomizerExtensionFieldCustomizer";
 
-export default class MyFieldCustomizerExtensionFieldCustomizer
-  extends BaseFieldCustomizer<IMyFieldCustomizerExtensionFieldCustomizerProperties> {
-
+export default class MyFieldCustomizerExtensionFieldCustomizer extends BaseFieldCustomizer<IMyFieldCustomizerExtensionFieldCustomizerProperties> {
   public onInit(): Promise<void> {
     // Add your custom initialization to this method.  The framework will wait
     // for the returned promise to resolve before firing any BaseFieldCustomizer events.
-    Log.info(LOG_SOURCE, 'Activated MyFieldCustomizerExtensionFieldCustomizer with properties:');
+    Log.info(
+      LOG_SOURCE,
+      "Activated MyFieldCustomizerExtensionFieldCustomizer with properties:"
+    );
     Log.info(LOG_SOURCE, JSON.stringify(this.properties, undefined, 2));
-    Log.info(LOG_SOURCE, `The following string should be equal: "MyFieldCustomizerExtensionFieldCustomizer" and "${strings.Title}"`);
+    Log.info(
+      LOG_SOURCE,
+      `The following string should be equal: "MyFieldCustomizerExtensionFieldCustomizer" and "${strings.Title}"`
+    );
     return Promise.resolve();
   }
 
   public onRenderCell(event: IFieldCustomizerCellEventParameters): void {
     // Use this method to perform your custom cell rendering.
-    const text: string = `${this.properties.sampleText}: ${event.fieldValue}`;
+    //const text: string = `${this.properties.sampleText}: ${event.fieldValue}`;
 
-    event.domElement.innerText = text;
+    const text: string = `${event.fieldValue}`;
 
-    event.domElement.classList.add(styles.MyFieldCustomizerExtension);
+    //event.domElement.innerText = text;
+
+    //event.domElement.classList.add(styles.cell);
+
+    event.domElement.innerHTML = `<div class='${styles.MyFieldCustomizerExtension}'><div class='${styles.cell}'><div style='background:red;width:${event.fieldValue}px;color:blue;'>${event.fieldValue}%</div></div></div>`;
   }
 
   public onDisposeCell(event: IFieldCustomizerCellEventParameters): void {
