@@ -8,6 +8,7 @@ import {
 import { Dialog } from "@microsoft/sp-dialog";
 
 import * as strings from "CustomCommandSetCommandSetStrings";
+import pnp from "sp-pnp-js";
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -36,6 +37,12 @@ export default class CustomCommandSetCommandSet extends BaseListViewCommandSet<I
       // This command should be hidden unless exactly one row is selected.
       compareOneCommand.visible = event.selectedRows.length === 1;
     }
+
+    const compareThreeCommand: Command = this.tryGetCommand("COMMAND_3");
+    if (compareThreeCommand) {
+      // This command should be hidden unless exactly one row is selected.
+      compareThreeCommand.visible = event.selectedRows.length > 1;
+    }
   }
 
   public onExecute(event: IListViewCommandSetExecuteEventParameters): void {
@@ -52,8 +59,32 @@ export default class CustomCommandSetCommandSet extends BaseListViewCommandSet<I
       case "COMMAND_2":
         Dialog.alert(`${this.properties.sampleTextTwo}`);
         break;
+      case "COMMAND_3":
+        Dialog.prompt(`Project Status Remarks`).then((value: string) => {
+          this.UpdateRemarks(event.selectedRows, value);
+        });
+        break;
       default:
         throw new Error("Unknown command");
     }
+  }
+
+  private UpdateRemarks(
+    selectedRows: readonly import("@microsoft/sp-listview-extensibility").RowAccessor[],
+    value: string
+  ) {
+    let batch = pnp.sp.createBatch();
+    selectedRows.forEach((selectedRow) => {
+      pnp.sp.web.lists
+        .getByTitle("ProjectsStatus")
+        .items.getById(selectedRow.getValueByName("ID"))
+        .inBatch(batch)
+        .update({ Remarks: value })
+        .then((res) => {});
+    });
+
+    batch.execute().then((res) => {
+      location.reload();
+    });
   }
 }
