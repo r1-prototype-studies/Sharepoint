@@ -4,4 +4,8 @@ export interface IWebPartWithReactProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+  absoluteurl: string;
+  relativeurl: string;
+  sitetitle: string;
+  username: string;
 }

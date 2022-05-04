@@ -27,6 +27,15 @@ export default class WebPartWithReact extends React.Component<IWebPartWithReactP
             using REACT Framework <br />
             The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It's the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
           </p>
+
+          <h4>My Site properties</h4>
+          <ul className={styles.links}>
+            <li>Absolute Url: {escape(this.props.absoluteurl)}</li>
+            <li>Relative URL: {escape(this.props.relativeurl)}</li>
+            <li>Title: {escape(this.props.sitetitle)}</li>
+            <li>User Name: {escape(this.props.username)}</li>
+          </ul>
+
           <h4>Learn more about SPFx development:</h4>
           <ul className={styles.links}>
             <li><a href="https://aka.ms/spfx" target="_blank">SharePoint Framework Overview</a></li>
@@ -38,7 +47,7 @@ export default class WebPartWithReact extends React.Component<IWebPartWithReactP
             <li><a href="https://aka.ms/m365pnp" target="_blank">Microsoft 365 Developer Community</a></li>
           </ul>
         </div>
-      </section>
+      </section >
     );
   }
 }
