@@ -36,7 +36,11 @@
 * If we are working with the xml file, ensure that there are no spaces at the top.
 * To create customized header and footer components, use extension.
 * In react, inline styles are not allowed.
-* 
+* React lifecycle
+  * Constructor
+  * componentWillMount
+  * Render
+  * componentDidMount
 
 
 # Steps
