@@ -19,10 +19,23 @@ export default class FecDemo extends React.Component<IFecDemoProps, {}> {
   }
 
   public render(): React.ReactElement<{}> {
+
+    const myStyles = {
+      color: 'blue',
+      width: `${ this.props.text }px`,
+      background: 'green',
+    }
+
     return (
+
       <div className={styles.FecDemo}>
-        { this.props.text }
+        <div className={styles.cell}>
+          <div style={myStyles}>
+            {this.props.text}
+          </div>
+        </div>
       </div>
+
     );
   }
 }
