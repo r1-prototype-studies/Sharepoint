@@ -14,7 +14,7 @@ export default class WebPartWithReact extends React.Component<IWebPartWithReactP
     } = this.props;
 
     return (
-      <section className={`${styles.webPartWithReact} ${hasTeamsContext ? styles.teams : ''}`}>
+      <section className={`${ styles.webPartWithReact } ${ hasTeamsContext ? styles.teams : '' }`}>
         <div className={styles.welcome}>
           <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
           <h2>Well done, {escape(userDisplayName)}!</h2>
@@ -22,8 +22,9 @@ export default class WebPartWithReact extends React.Component<IWebPartWithReactP
           <div>Web part property value: <strong>{escape(description)}</strong></div>
         </div>
         <div>
-          <h3>Welcome to SharePoint Framework!</h3>
+          <h3>Welcome to SharePoint Framework using REACT!</h3>
           <p>
+            using REACT Framework <br />
             The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It's the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
           </p>
           <h4>Learn more about SPFx development:</h4>
