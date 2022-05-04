@@ -35,6 +35,7 @@
 * To change the icon of the web part, change "officeFabricIconFontName" in the manifest file for an icon from office (refer link#1 in references) or use iconImageUrl for an image from internet.
 * If we are working with the xml file, ensure that there are no spaces at the top.
 * To create customized header and footer components, use extension.
+* In react, inline styles are not allowed.
 * 
 
 
