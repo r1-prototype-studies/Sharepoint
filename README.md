@@ -83,6 +83,13 @@
 10. use the below command to use the above custom library
     ```
     npm link <<customLibraryName>>
+1. To install JQuery, run the below command
+    ```
+    npm install --save jquery
+2. To install types for jquery, run the below command
+    ```
+    npm install --save @types/jquery
+3. 
 
 
 # References
