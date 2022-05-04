@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "webpart-with-react-demo-client-side-solution",
+    "id": "16db6ea8-c702-4adb-b259-d2efb9820d17",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "webpart-with-react-demo description"
+      },
+      "longDescription": {
+        "default": "webpart-with-react-demo description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "webpart-with-react-demo Feature",
+        "description": "The feature that activates elements of the webpart-with-react-demo solution.",
+        "id": "b7153f93-4642-4abb-954b-cf1f58a42fc3",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/webpart-with-react-demo.sppkg"
+  }
+}
