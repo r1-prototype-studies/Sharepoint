@@ -92,7 +92,13 @@
 2. To install types for jquery, run the below command
     ```
     npm install --save @types/jquery
-3. 
+3. To install types for jquery ui, run the below command
+    ```
+    npm install --save @types/jqueryui
+1. To install types for sharepoint graph api, run the below command
+    ```
+    npm install --save-dev @microsoft/microsoft-graph-types
+1. 
 
 
 # References
@@ -101,6 +107,7 @@
 * https://pnp.github.io/pnpjs/getting-started/
 * https://jsonplaceholder.typicode.com/
 * http://json2ts.com/
+* https://developer.microsoft.com/en-us/graph/graph-explorer
 
 
 
