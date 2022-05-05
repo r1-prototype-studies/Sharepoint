@@ -96,5 +96,9 @@
 * https://developer.microsoft.com/en-us/fluentui#/styles/web/icons
 * https://www.base64-image.de/
 * https://pnp.github.io/pnpjs/getting-started/
+* https://jsonplaceholder.typicode.com/
+* http://json2ts.com/
+
+
 
 

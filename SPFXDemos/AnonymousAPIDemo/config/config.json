@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "anonymous-apiwp-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/anonymousApiwpDemo/AnonymousApiwpDemoWebPart.js",
+          "manifest": "./src/webparts/anonymousApiwpDemo/AnonymousApiwpDemoWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AnonymousApiwpDemoWebPartStrings": "lib/webparts/anonymousApiwpDemo/loc/{locale}.js"
+  }
+}
