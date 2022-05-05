@@ -41,6 +41,9 @@
   * componentWillMount
   * Render
   * componentDidMount
+* Don't give alias for jqueryUI. It already has a namespace. (JQueryUI)
+* 
+
 
 
 # Steps

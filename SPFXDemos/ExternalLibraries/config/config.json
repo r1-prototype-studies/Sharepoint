@@ -11,7 +11,10 @@
       ]
     }
   },
-  "externals": {},
+  "externals": {
+    "jquery": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js",
+    "jqueryui": "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+  },
   "localizedResources": {
     "ExternalLibraryWebPartStrings": "lib/webparts/externalLibrary/loc/{locale}.js"
   }
