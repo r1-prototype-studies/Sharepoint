@@ -4,4 +4,5 @@ export interface IReactShowlistProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+  websiteUrl: string;
 }
