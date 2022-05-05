@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "anonymous-api-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/anonymousApi/AnonymousApiWebPart.js",
+          "manifest": "./src/webparts/anonymousApi/AnonymousApiWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AnonymousApiWebPartStrings": "lib/webparts/anonymousApi/loc/{locale}.js"
+  }
+}
