@@ -1,43 +1,96 @@
-import * as React from 'react';
-import styles from './CalendarEventsDemo.module.scss';
-import { ICalendarEventsDemoProps } from './ICalendarEventsDemoProps';
-import { escape } from '@microsoft/sp-lodash-subset';
+import * as React from "react";
+import styles from "./CalendarEventsDemo.module.scss";
+import { ICalendarEventsDemoProps } from "./ICalendarEventsDemoProps";
+import { escape } from "@microsoft/sp-lodash-subset";
 
-export default class CalendarEventsDemo extends React.Component<ICalendarEventsDemoProps, {}> {
+import { MSGraphClient } from "@microsoft/sp-http";
+import { ICalendarEventsState } from "./CalendarEventsState";
+import * as MicrosoftGraph from "@microsoft/microsoft-graph-types";
+
+export default class CalendarEventsDemo extends React.Component<
+  ICalendarEventsDemoProps,
+  ICalendarEventsState,
+  {}
+> {
+  constructor(props: ICalendarEventsDemoProps) {
+    super(props);
+    this.state = {
+      events: [],
+    };
+  }
+
+  public componentDidMount() {
+    this.props.context.msGraphClientFactory
+      .getClient()
+      .then((client: MSGraphClient): void => {
+        client
+          .api("me/calendar/events")
+          .version("1.0")
+          .select("*")
+          .get((error: any, eventsResponse, rawResponse?: any): void => {
+            if (error) {
+              console.error("Message is :" + error);
+              return;
+            }
+
+            const calendarEvents: MicrosoftGraph.Event[] = eventsResponse.value;
+            this.setState({ events: calendarEvents });
+          });
+      });
+  }
+
   public render(): React.ReactElement<ICalendarEventsDemoProps> {
     const {
       description,
       isDarkTheme,
       environmentMessage,
       hasTeamsContext,
-      userDisplayName
+      userDisplayName,
     } = this.props;
 
     return (
-      <section className={`${styles.calendarEventsDemo} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-          <h2>Well done, {escape(userDisplayName)}!</h2>
-          <div>{environmentMessage}</div>
-          <div>Web part property value: <strong>{escape(description)}</strong></div>
-        </div>
-        <div>
-          <h3>Welcome to SharePoint Framework!</h3>
-          <p>
-            The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It's the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-          </p>
-          <h4>Learn more about SPFx development:</h4>
-          <ul className={styles.links}>
-            <li><a href="https://aka.ms/spfx" target="_blank">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank">Microsoft 365 Developer Community</a></li>
-          </ul>
-        </div>
-      </section>
+      <div>
+        <ul>
+          {this.state.events.map((item, key) => (
+            <li key={item.id}>
+              {item.subject},{item.organizer.emailAddress.name},
+              {item.start.dateTime.substr(0, 10)},
+              {item.start.dateTime.substr(12, 5)},
+              {item.end.dateTime.substr(0, 10)},
+              {item.end.dateTime.substr(12, 5)}
+            </li>
+          ))}
+        </ul>
+
+        <style>{`
+   table{
+    border:1px solid black;
+    background-color:aqua;
+    
+   }
+ `}</style>
+
+        <table>
+          <tr>
+            <td>Subject</td>
+            <td>Organizer Name</td>
+            <td>Start Date</td>
+            <td>Start Time</td>
+            <td>End Date</td>
+            <td>End Time</td>
+          </tr>
+          {this.state.events.map((item, key) => (
+            <tr>
+              <td>{item.subject}</td>
+              <td>{item.organizer.emailAddress.name}</td>
+              <td>{item.start.dateTime.substr(0, 10)}</td>
+              <td>{item.start.dateTime.substr(12, 5)}</td>
+              <td>{item.end.dateTime.substr(0, 10)}</td>
+              <td>{item.end.dateTime.substr(12, 5)}</td>
+            </tr>
+          ))}
+        </table>
+      </div>
     );
   }
 }
