@@ -35,6 +35,10 @@
 * To change the icon of the web part, change "officeFabricIconFontName" in the manifest file for an icon from office (refer link#1 in references) or use iconImageUrl for an image from internet.
 * If we are working with the xml file, ensure that there are no spaces at the top.
 * To create customized header and footer components, use extension.
+* Extension uses: 
+  * Application cutomizer - header / footer
+  * Field Customizer - Graph color depending upon the status number
+  * Command set - Custom command buttons
 * In react, inline styles are not allowed.
 * React lifecycle
   * Constructor
@@ -43,7 +47,15 @@
   * componentDidMount
 * Don't give alias for jqueryUI. It already has a namespace. (JQueryUI)
 * Sharepoint context is present in @microsoft/sp-webpart-base
+* If the web part requires permission to access any backend api or Graph, it is recommended to have that web part as isolated web part.
+  * This is to handle security concerns
+  * Runs on a unique domain and is hosted on an iframe 
+  * Permission granted only applies to that code running on that unique domain 
+  * A dedicated azure AD registration gets created for this SPFx solution which handles the authentication.
+* Extension cannot be an isolated because extension runs on the entire web page whereas isolated runs within an iframe.
+* To make a webpart as an isolated webpart, update isDomainIsolated as true in package-solution.json
 * 
+
 
 
 
@@ -109,6 +121,7 @@
 * https://jsonplaceholder.typicode.com/
 * http://json2ts.com/
 * https://developer.microsoft.com/en-us/graph/graph-explorer
+* https://aad.portal.azure.com
 
 
 

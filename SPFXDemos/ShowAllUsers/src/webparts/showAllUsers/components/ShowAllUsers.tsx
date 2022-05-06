@@ -11,7 +11,7 @@ import * as MicrosoftGraph from "@microsoft/microsoft-graph-types";
 
 import {
   TextField,
-  //autobind,
+  autobind,
   PrimaryButton,
   DetailsList,
   DetailsListLayoutMode,
@@ -22,6 +22,7 @@ import {
 import * as strings from "ShowAllUsersWebPartStrings";
 export default class ShowAllUsers extends React.Component<
   IShowAllUsersProps,
+  IShowAllUsersState,
   {}
 > {
   constructor(props: IShowAllUsersProps, state: IShowAllUsersState) {

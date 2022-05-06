@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "show-all-users-client-side-solution",
+    "id": "439ad48e-64e2-4d0c-95c4-04eb58790cbf",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/show-all-users.sppkg"
+  }
+}
