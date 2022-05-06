@@ -42,6 +42,7 @@
   * Render
   * componentDidMount
 * Don't give alias for jqueryUI. It already has a namespace. (JQueryUI)
+* Sharepoint context is present in @microsoft/sp-webpart-base
 * 
 
 
