@@ -1,43 +1,75 @@
-import * as React from 'react';
-import styles from './ShowAllUsers.module.scss';
-import { IShowAllUsersProps } from './IShowAllUsersProps';
-import { escape } from '@microsoft/sp-lodash-subset';
+import * as React from "react";
+import styles from "./ShowAllUsers.module.scss";
+import { IShowAllUsersProps } from "./IShowAllUsersProps";
+import { escape } from "@microsoft/sp-lodash-subset";
 
-export default class ShowAllUsers extends React.Component<IShowAllUsersProps, {}> {
+import { IUser } from "./IUser";
+import { IShowAllUsersState } from "./IShowAllUsersState";
+
+import { MSGraphClient } from "@microsoft/sp-http";
+import * as MicrosoftGraph from "@microsoft/microsoft-graph-types";
+
+import {
+  TextField,
+  //autobind,
+  PrimaryButton,
+  DetailsList,
+  DetailsListLayoutMode,
+  CheckboxVisibility,
+  SelectionMode,
+} from "office-ui-fabric-react";
+
+import * as strings from "ShowAllUsersWebPartStrings";
+export default class ShowAllUsers extends React.Component<
+  IShowAllUsersProps,
+  {}
+> {
+  constructor(props: IShowAllUsersProps, state: IShowAllUsersState) {
+    super(props);
+
+    this.state = {
+      users: [],
+      searchFor: "Aroan",
+    };
+  }
+
   public render(): React.ReactElement<IShowAllUsersProps> {
     const {
       description,
       isDarkTheme,
       environmentMessage,
       hasTeamsContext,
-      userDisplayName
+      userDisplayName,
     } = this.props;
 
     return (
-      <section className={`${styles.showAllUsers} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-          <h2>Well done, {escape(userDisplayName)}!</h2>
-          <div>{environmentMessage}</div>
-          <div>Web part property value: <strong>{escape(description)}</strong></div>
-        </div>
-        <div>
-          <h3>Welcome to SharePoint Framework!</h3>
-          <p>
-            The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It's the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
+      <div className={styles.showAllUsers}>
+        <TextField
+          label={strings.SearchFor}
+          required={true}
+          value={this.state.searchFor}
+          onChanged={this._onSearchForChanged}
+          onGetErrorMessage={this._getSearchForErrorMessage}
+        />
+
+        <p className={styles.title}>
+          <PrimaryButton text="Search" title="Search" onClick={this._search} />
+        </p>
+
+        {this.state.users != null && this.state.users.length > 0 ? (
+          <p className={styles.row}>
+            <DetailsList
+              items={this.state.users}
+              columns={_usersListColumns}
+              setKey="set"
+              checkboxVisibility={CheckboxVisibility.onHover}
+              selectionMode={SelectionMode.single}
+              layoutMode={DetailsListLayoutMode.fixedColumns}
+              compact={true}
+            />
           </p>
-          <h4>Learn more about SPFx development:</h4>
-          <ul className={styles.links}>
-            <li><a href="https://aka.ms/spfx" target="_blank">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank">Microsoft 365 Developer Community</a></li>
-          </ul>
-        </div>
-      </section>
+        ) : null}
+      </div>
     );
   }
 }
