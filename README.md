@@ -1,7 +1,6 @@
 <h1>Sharepoint</h1>
 
 - [Notes](#notes)
-- [Steps](#steps)
 - [References](#references)
 
 # Notes
@@ -20,7 +19,7 @@
   *  We should install an app in the site collections. Go to settings and select "Add an app" 
   *  Click on package (app) that we uploaded.
 * Import the below modules to make REST API calls
-    ```
+    ``` javascript
     import { 
         SPHttpClient,
         SPHttpClientResponse
@@ -28,7 +27,7 @@
 * If you make any changes to the manifest.json file, you should stop the gulp server and start for the changes.
 * The best place to assign default values is within init function.
 * To disable reactive changes from propertypane, add the below method, by default this value is false.
-    ```
+    ``` javascript
     protected get disableReactivePropertyChanges(): boolean {
       return true;
     }
@@ -54,9 +53,33 @@
   * A dedicated azure AD registration gets created for this SPFx solution which handles the authentication.
 * Extension cannot be an isolated because extension runs on the entire web page whereas isolated runs within an iframe.
 * To make a webpart as an isolated webpart, update isDomainIsolated as true in package-solution.json
+* To make a webpart as a provider webpart, import the below
+    ``` javascript
+    import {
+        IDynamicDataPropertyDefinition,
+        IDynamicDataCallables
+    } from '@microsoft/sp-dynamic-data';
+   ```
+   * The provider webpart should implement the interface IDynamicDataCallables as like in 
+   ``` javascript
+   export default class ProviderWebPartDemoWebPart 
+    extends BaseClientSideWebPart <IProviderWebPartDemoWebPartProps> 
+    implements IDynamicDataCallables
+    {
+    ```
+* Whenever the provider webpart communicates with the consumer webpart, the consumer webpart should have the below property of the type `DynamicProperty`
+* Import the below in consumer webpart. 
+    ``` javascript 
+    import {   
+        DynamicDataSharedDepth,
+        PropertyPaneDynamicFieldSet,
+        PropertyPaneDynamicField,
+        IPropertyPaneConditionalGroup,
+        IWebPartPropertiesMetadata
+        } from '@microsoft/sp-webpart-base';
+
+    import { DynamicProperty } from '@microsoft/sp-component-base';
 * 
-
-
 
 
 # Steps
