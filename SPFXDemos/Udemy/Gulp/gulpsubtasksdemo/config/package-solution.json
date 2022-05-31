@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "gulpsubtasksdemo-client-side-solution",
+    "id": "6691bbae-c9eb-4056-af04-baff78cacbf3",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/gulpsubtasksdemo.sppkg"
+  }
+}

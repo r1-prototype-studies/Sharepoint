@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "htls-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/htlsDemo/HtlsDemoWebPart.js",
+          "manifest": "./src/webparts/htlsDemo/HtlsDemoWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HtlsDemoWebPartStrings": "lib/webparts/htlsDemo/loc/{locale}.js"
+  }
+}

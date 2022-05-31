@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "graph-api-events-demo-client-side-solution",
+    "id": "3333546d-6fbf-4dbf-a410-0d6c7ff4923a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+    
+  },
+  "paths": {
+    "zippedPackage": "solution/graph-api-events-demo.sppkg"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "hosting-through-local-server-demo-client-side-solution",
+    "id": "1fd03f99-8df0-49a6-8e34-66b91dc96793",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": false,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/hosting-through-local-server-demo.sppkg"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "b9067cdd-103a-4138-ae3b-8ee3918fe201",
+  "alias": "CrudWithReactWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { 
+      "default": "CRUD Group",
+      "en-us": "CRUD Group",
+      "fr-ca": "Groupe CRUD",
+      "es-es": "Grupo CRUD"
+    },
+    "title": { 
+      "default": "Performing CRUD Operations With React",
+      "en-us": "Performing CRUD Operations With React",
+      "fr-ca": "Effectuer des opérations CRUD avec réagir",
+      "es-es": "Realización de operaciones CRUD con React"
+    },
+    "description": 
+    { 
+      "default": "This webpart demonstrates Insert,Update,Select,Delete Operations", 
+      "en-us": "This webpart demonstrates Insert,Update,Select,Delete Operations", 
+      "fr-ca": "Ce webpart démontre Insert,Update,Select, Delete Operations",
+      "es-es": "Este elemento web muestra Insert,Update,Select,Delete Operations"
+    },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "CrudWithReact"
+    }
+  }]
+}

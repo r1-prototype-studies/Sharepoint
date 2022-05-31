@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "gulpsequencedemo-client-side-solution",
+    "id": "609c2e6b-ccb9-45b7-984f-037de868e62a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/gulpsequencedemo.sppkg"
+  }
+}

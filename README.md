@@ -79,7 +79,60 @@
         } from '@microsoft/sp-webpart-base';
 
     import { DynamicProperty } from '@microsoft/sp-component-base';
-* 
+* Run the below command to login to AWS from azzure cli
+    ```
+    az login
+* To transpile a project manually, run the below command where tsconfig.json is present.
+    ```
+    tsc -p ./
+* Use AADHttpClientFactory if we are calling azure ad secured rest apis.
+* To make a webpart as a SPA, add "SharePointFullPage" to the supportedhosts in the manifest json file.
+* TO load the web part with different locale, just add "--locale=es-es" to the gulp serve command.
+* Run the below command to get the list of gulp tasks
+    ```
+    gulp --tasks
+* To sequence the gulp tasks
+    ``` javascript
+    gulp.task('all-in-one-go', gulpSequence('clean', 'build', 'bundle', 'package-solution'));
+* Adding sub task to a gulp task
+    ``` javascript
+    const subtaskbuildChild2 = build.subTask('sub-task-buildChild2', function (gulp, buildOptions, done) {
+        this.log('sub-task-buildChild2 of build through this.log');
+        done();    
+    });
+
+    build.task('sub-task-buildChild2', subtaskbuildChild2);
+
+    build.initialize(gulp);
+
+    if (gulp.tasks['build']) {
+        gulp.tasks['build'].dep.push('sub-task-buildChild1','sub-task-buildChild2');
+    }
+* Adding pre and post build tasks
+    ``` javascript
+    const postBundlesubTask = build.subTask('post-bundle', function (gulp, buildOptions, done) {
+        this.log('Message from Post Bundle Task');
+        done();
+    });
+    build.rig.addPostBundleTask(postBundlesubTask);
+
+    const preBuildSubTask = build.subTask('pre-build', function (gulp, buildOptions, done) {
+        this.log('Message from PreBuild Task');
+        done();
+    });
+    build.rig.addPreBuildTask(preBuildSubTask);
+
+    const postBuildSubTask = build.subTask('post-build', function (gulp, buildOptions, done) {
+        this.log('Message from PostBuild Task');
+        done();
+    });
+    build.rig.addPostBuildTask(postBuildSubTask);
+
+    const postTypeScriptSubTask = build.subTask('post-typescript', function (gulp, buildOptions, done) {
+        this.log('Message from PostTypeScript task');
+        done();
+    });
+    build.rig.addPostTypescriptTask(postTypeScriptSubTask);
 
 
 # Steps
@@ -98,9 +151,12 @@
     ```
     gulp trust-dev-cert
 3. Open the file ./config/serve.json and change "enter-your-sharepoint-site" to the tenant we are using
-4. Run the above command to start the application
+4. Run the below command to start the application
     ```
     gulp serve
+4. Run the below command to start the application without a browser
+    ```
+    gulp serve --nobrowser
 4. In order to create additional web parts, just run the command in the same path where we ran this command before. It will know whether to create a new solution or to add a new web part.
     ```
     yo @microsoft/sharepoint
@@ -134,10 +190,60 @@
 1. To install types for sharepoint graph api, run the below command
     ```
     npm install --save-dev @microsoft/microsoft-graph-types
-1. 
+1. Install azure cli
+2. Run the below npm command 
+    ```
+    npm install --save azure-functions-ts-essentials
+3. Run the below npm command 
+   ```
+   npm i -g azure-functions-core-tools@2 --unsafe-perm true
+4. Run the below npm command
+    ```
+    npm install -g typescript
+5. Login to azure portal
+    1. Click on Login create a resource
+    2. search for function app
+    3. Create a function app
+    4. Create a local function app in the local system by running the command `func init <function app name in azure portal>`
+    5. run the command `func new`
+    6. Select the template &rarr; Http Trigger
+    7. Enter the function name 
+    8. Go to the function folder
+    9. Copy the relevant files from transpiled and project folders
+    9. Start the function locally by running the command `func host start`
+1. Install office client cli using the below command
+    ```
+    npm install -g @pnp/office365-cli
+2. Run the below command to grant access in office365 cli
+    ```
+    spo serviceprincipal grant add --resource "Microsoft Graph" --scope "Calendars.Read"
+1. To work with team webpart creation, run the below command
+    ```
+    npm install @microsoft/teams-js --save
+1. Install Sharepoint online management shell - https://www.microsoft.com/en-us/download/details.aspx?id=35588
+2. Run the below commands in the Sharepoint online management shell
+    ```
+    Connect-SPOService -Url https://contoso-admin.sharepoint.com
+    Set-SPOTenantCdnEnabled -CdnType Public
+    Get-SPOTenantCdnEnabled -CdnType Public
+    Get-SPOTenantCdnOrigins -CdnType Public
+    Get-SPOTenantCdnPolicies -CdnType Public
+3. To deploy in site Assets
+    ```
+    New-SPOPublicCdnOrigin -Url https://kameswarasarma.sharepoint.com/SiteAssets/HelloWorldWPCDN
+4. Get the ID which you get from the below command and append it to https://publiccdn.sharepointonline.com/kameswarasarma.sharepoint.com/
+    ```
+    Get-SPOPublicCdnOrigins | Format-List
+5. Open write-manifests.json file within config folder and update the value for cdnBasePath with that above url appended with ID.
+1. Run the below command to install gulp sequence
+    ```
+    npm install --save-dev gulp-sequence
+
+
 
 
 # References
+* https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview
 * https://developer.microsoft.com/en-us/fluentui#/styles/web/icons
 * https://www.base64-image.de/
 * https://pnp.github.io/pnpjs/getting-started/

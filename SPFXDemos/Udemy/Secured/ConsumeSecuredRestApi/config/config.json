@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "consume-rest-apiwp-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/consumeRestApiwp/ConsumeRestApiwpWebPart.js",
+          "manifest": "./src/webparts/consumeRestApiwp/ConsumeRestApiwpWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ConsumeRestApiwpWebPartStrings": "lib/webparts/consumeRestApiwp/loc/{locale}.js"
+  }
+}

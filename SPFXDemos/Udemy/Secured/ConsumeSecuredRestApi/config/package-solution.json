@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "consumerestapi-client-side-solution",
+    "id": "d5d90cf8-3df9-474e-ad5d-3ab82ddaac87",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/consumerestapi.sppkg"
+  }
+}

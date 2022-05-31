@@ -1,0 +1,26 @@
+{
+  "name": "restapiasazurefunctiondemo",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "@azure/functions": "^1.0.1-beta1",
+    "azure-functions-ts-essentials": "^1.3.2",
+    "gulp": "^4.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "typescript": "^3.3.3"
+  }
+}
