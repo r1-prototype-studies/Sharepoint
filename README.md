@@ -1,6 +1,8 @@
 <h1>Sharepoint</h1>
 
 - [Notes](#notes)
+- [Steps](#steps)
+- [PowerApps](#powerapps)
 - [References](#references)
 
 # Notes
@@ -154,53 +156,54 @@
 4. Run the below command to start the application
     ```
     gulp serve
-4. Run the below command to start the application without a browser
+5. Run the below command to start the application without a browser
     ```
     gulp serve --nobrowser
-4. In order to create additional web parts, just run the command in the same path where we ran this command before. It will know whether to create a new solution or to add a new web part.
+6. In order to create additional web parts, just run the command in the same path where we ran this command before. It will know whether to create a new solution or to add a new web part.
     ```
     yo @microsoft/sharepoint
-5. Run the below command to compile the solution
+7. Run the below command to compile the solution
     ```
     gulp build
-6. Run the below command to minify the JavaScript files
+8. Run the below command to minify the JavaScript files
     ```
     gulp bundle
-7. Run the below command to create sharepoint package
+9. Run the below command to create sharepoint package
     ```
     gulp package-solution
-8. To install sppnpjs library, run the following command
-   ```
-   npm install sp-pnp-js --save
-9. To debug custom library, link it using the below command
+10. To install sppnpjs library, run the following command
+    ```
+    npm install sp-pnp-js --save
+   
+11. To debug custom library, link it using the below command
     ```
     npm link
-10. use the below command to use the above custom library
+12. use the below command to use the above custom library
     ```
     npm link <<customLibraryName>>
-1. To install JQuery, run the below command
+13. To install JQuery, run the below command
     ```
     npm install --save jquery
-2. To install types for jquery, run the below command
+14. To install types for jquery, run the below command
     ```
     npm install --save @types/jquery
-3. To install types for jquery ui, run the below command
+15. To install types for jquery ui, run the below command
     ```
     npm install --save @types/jqueryui
-1. To install types for sharepoint graph api, run the below command
+16. To install types for sharepoint graph api, run the below command
     ```
     npm install --save-dev @microsoft/microsoft-graph-types
-1. Install azure cli
-2. Run the below npm command 
+17. Install azure cli
+18. Run the below npm command 
     ```
     npm install --save azure-functions-ts-essentials
-3. Run the below npm command 
-   ```
-   npm i -g azure-functions-core-tools@2 --unsafe-perm true
-4. Run the below npm command
+19. Run the below npm command 
+    ```
+    npm i -g azure-functions-core-tools@2 --unsafe-perm true
+20. Run the below npm command
     ```
     npm install -g typescript
-5. Login to azure portal
+21. Login to azure portal
     1. Click on Login create a resource
     2. search for function app
     3. Create a function app
@@ -210,7 +213,7 @@
     7. Enter the function name 
     8. Go to the function folder
     9. Copy the relevant files from transpiled and project folders
-    9. Start the function locally by running the command `func host start`
+    10. Start the function locally by running the command `func host start`
 1. Install office client cli using the below command
     ```
     npm install -g @pnp/office365-cli
@@ -238,8 +241,13 @@
 1. Run the below command to install gulp sequence
     ```
     npm install --save-dev gulp-sequence
+    ```
 
 
+
+
+
+# PowerApps
 
 
 # References
@@ -251,7 +259,3 @@
 * http://json2ts.com/
 * https://developer.microsoft.com/en-us/graph/graph-explorer
 * https://aad.portal.azure.com
-
-
-
-
