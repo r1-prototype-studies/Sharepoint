@@ -1,11 +1,13 @@
 <h1>Sharepoint</h1>
 
-- [Notes](#notes)
-- [Steps](#steps)
-- [PowerApps](#powerapps)
-- [References](#references)
+- [Sharepoint Notes](#sharepoint-notes)
+- [Sharepoint Steps](#sharepoint-steps)
+- [Sharepoint References](#sharepoint-references)
+- [PowerApps Notes](#powerapps-notes)
+  - [Canvas App](#canvas-app)
+- [PowerApps References](#powerapps-references)
 
-# Notes
+# Sharepoint Notes
 * Creating self signed certificate is a one time activity. We need not create for all the web parts
 * Folder Anatomy
     
@@ -137,7 +139,7 @@
     build.rig.addPostTypescriptTask(postTypeScriptSubTask);
 
 
-# Steps
+# Sharepoint Steps
 1. Run the below command to create the sharepoint project in VS code
     ```
     yo @microsoft/sharepoint
@@ -243,14 +245,7 @@
     npm install --save-dev gulp-sequence
     ```
 
-
-
-
-
-# PowerApps
-
-
-# References
+# Sharepoint References
 * https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview
 * https://developer.microsoft.com/en-us/fluentui#/styles/web/icons
 * https://www.base64-image.de/
@@ -259,3 +254,30 @@
 * http://json2ts.com/
 * https://developer.microsoft.com/en-us/graph/graph-explorer
 * https://aad.portal.azure.com
+
+# PowerApps Notes
+* bedaye8031@seinfaq.com, test@123
+* In Excel, create the data as a table.
+## Canvas App
+* Gallery 
+    * Simple list of records pulled from a table.
+    * Mostly a preview view with some data.
+* Forms and Data cards
+* Triggers 
+    * Triggers start with the word "On"
+    * SubmitForm &rarr; Submits the form
+    * ResetForm &rarr; Resets the form
+    * Back &rarr; Goes back
+    * The functions are seperated by ";"
+* The microsoft powerapp remembers the last screen we had. that's how back works.
+* App checker can be used to identify errors and resolve it.
+* To publish an app, save it and then publish it.
+* 
+
+
+# PowerApps References
+* https://make.powerapps.com/
+* https://docs.microsoft.com/en-us/power-apps/maker/canvas-apps/working-with-formulas
+
+
+
