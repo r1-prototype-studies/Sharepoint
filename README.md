@@ -272,7 +272,26 @@
 * The microsoft powerapp remembers the last screen we had. that's how back works.
 * App checker can be used to identify errors and resolve it.
 * To publish an app, save it and then publish it.
-* 
+* For web app, use tablet layout if you are creating a blank app.
+* Create a master screen where other screens are based off from. So all the screens will be identical with same color schemes.
+* Wrap Count can be used to make a gallery as multicolumn gallery.
+* There are 3 types of variables
+    * Contextual variables
+        * Can be accessed only within a screen.
+        * To update a variable: UpdateContext({FirstVaraible: text1.text})
+        * Can store many different items
+    * Global variables
+        * Can be set in one screen and accessed in another.
+        * To update a global variable: Set(FirstVariable, text1.text)
+        * Can store only one item
+    * Collections
+        * Data stored like excel
+        * Add to a collection using Collect(OurCollections, {First: "Aroan", Second: "Kingslin"})
+        * Remove from collection using Remove(OurCollections,ThisItem)
+* Search takes in the search term whereas filter takes in the formula.
+* NewForm(Form) and EditForm(Form) is used to load the form in new or edit mode.
+
+
 
 
 # PowerApps References
