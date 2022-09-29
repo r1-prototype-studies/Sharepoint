@@ -1,13 +1,17 @@
 <h1>Sharepoint</h1>
 
-- [Sharepoint Notes](#sharepoint-notes)
-- [Sharepoint Steps](#sharepoint-steps)
-- [Sharepoint References](#sharepoint-references)
-- [PowerApps Notes](#powerapps-notes)
-  - [Canvas App](#canvas-app)
-- [PowerApps References](#powerapps-references)
+- [Sharepoint](#sharepoint)
+  - [Notes](#notes)
+  - [Steps](#steps)
+  - [References](#references)
+- [PowerApps](#powerapps)
+  - [Notes](#notes-1)
+    - [Canvas App](#canvas-app)
+    - [Common Data Service](#common-data-service)
+  - [References](#references-1)
 
-# Sharepoint Notes
+# Sharepoint 
+## Notes
 * Creating self signed certificate is a one time activity. We need not create for all the web parts
 * Folder Anatomy
     
@@ -139,7 +143,7 @@
     build.rig.addPostTypescriptTask(postTypeScriptSubTask);
 
 
-# Sharepoint Steps
+## Steps
 1. Run the below command to create the sharepoint project in VS code
     ```
     yo @microsoft/sharepoint
@@ -245,7 +249,7 @@
     npm install --save-dev gulp-sequence
     ```
 
-# Sharepoint References
+## References
 * https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview
 * https://developer.microsoft.com/en-us/fluentui#/styles/web/icons
 * https://www.base64-image.de/
@@ -255,10 +259,11 @@
 * https://developer.microsoft.com/en-us/graph/graph-explorer
 * https://aad.portal.azure.com
 
-# PowerApps Notes
+# PowerApps 
+## Notes
 * bedaye8031@seinfaq.com, test@123
 * In Excel, create the data as a table.
-## Canvas App
+### Canvas App
 * Gallery 
     * Simple list of records pulled from a table.
     * Mostly a preview view with some data.
@@ -289,14 +294,51 @@
         * Add to a collection using Collect(OurCollections, {First: "Aroan", Second: "Kingslin"})
         * Remove from collection using Remove(OurCollections,ThisItem)
 * Search takes in the search term whereas filter takes in the formula.
+    * Search(Sheet1,TextInput5.Text,"FirstName","LastName","AgentName")
+    * Filter(If(Dropdown1.Selected.Value = "All", true, VIPLevel = Dropdown1.Selected.Value))
 * NewForm(Form) and EditForm(Form) is used to load the form in new or edit mode.
+* Launch is used to open other apps like phone, email.
+    * tel: 
+    * mailto:
+    * /providers/Microsoft.PowerApps/apps/{appId}
+* Dropdown comparison with table values
+    * SortByColumns(Distinct(Filter(Sheet1,Location = Dropdown2.Selected.Result),VIPLevel),"Result")
+* Delete a record
+    * Remove(Sheet1,Gallery1.Selected)
+* To get selected date in datepicker, use Datepicker1.SelectedDate
+* To get value from toggle, use Toggle2.value
+
+
+### Common Data Service
+* Benefits
+    * All the data are standardized.
+    * Business rules can be applied on the data.
+    * Security and data isolation for each Users.
+    * Data backups.
+* Entities is now tables
+    * Fields are columns
+    * Relationships
+        * Many to one
+        * One to many
+        * Many to many
+    * Business Rules
+    * Forms
+    * Dashboards
+    * Charts
+* Business Rules
+* Data flows
+* Connections
+* Gateways
 
 
 
 
-# PowerApps References
+
+
+## References
 * https://make.powerapps.com/
 * https://docs.microsoft.com/en-us/power-apps/maker/canvas-apps/working-with-formulas
+* https://forwardforever.com/power-apps-and-git-version-control/
 
 
 
