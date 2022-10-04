@@ -8,6 +8,7 @@
   - [Notes](#notes-1)
     - [Canvas App](#canvas-app)
     - [Common Data Service](#common-data-service)
+    - [Portals](#portals)
   - [References](#references-1)
 
 # Sharepoint 
@@ -307,7 +308,9 @@
     * Remove(Sheet1,Gallery1.Selected)
 * To get selected date in datepicker, use Datepicker1.SelectedDate
 * To get value from toggle, use Toggle2.value
-
+* cons
+    * Power apps has to be installed.
+    * Power app users should be present in that org to access them.
 
 ### Common Data Service
 * Benefits
@@ -330,15 +333,22 @@
 * Connections
 * Gateways
 
+### Portals
+* Portals extends power apps as websites.
+* Allows to share data external to the organization.
+* To create a portal, click blank app > Blank Website > 
 
 
 
 
 
 ## References
+* https://powerusers.microsoft.com/t5/Community-App-Samples/bd-p/AppFeedbackGallery
 * https://make.powerapps.com/
+* https://docs.microsoft.com/en-us/powerapps/powerapps-overview
 * https://docs.microsoft.com/en-us/power-apps/maker/canvas-apps/working-with-formulas
 * https://forwardforever.com/power-apps-and-git-version-control/
+* https://powerapps.microsoft.com/en-us/pricing/
 
 
 
