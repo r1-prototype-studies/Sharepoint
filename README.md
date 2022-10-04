@@ -10,6 +10,9 @@
     - [Common Data Service](#common-data-service)
     - [Portals](#portals)
   - [References](#references-1)
+- [Power Automate AKA Flow](#power-automate-aka-flow)
+  - [Notes](#notes-2)
+  - [References](#references-2)
 
 # Sharepoint 
 ## Notes
@@ -338,10 +341,6 @@
 * Allows to share data external to the organization.
 * To create a portal, click blank app > Blank Website > 
 
-
-
-
-
 ## References
 * https://powerusers.microsoft.com/t5/Community-App-Samples/bd-p/AppFeedbackGallery
 * https://make.powerapps.com/
@@ -351,4 +350,21 @@
 * https://powerapps.microsoft.com/en-us/pricing/
 
 
+# Power Automate AKA Flow
+## Notes
+* Flow is a visual representation of any task. Trigger &rarr; Action.
+* Flows can have multiple actions. It can be conditional actions.
+* Types of Flows:
+    
+    | Type            | Trigger           | Description                                            |
+    | --------------- | ----------------- | ------------------------------------------------------ |
+    | Instant         | Button Click      |                                                        |
+    | Automated       | An Event          | Automates any task                                     |
+    | Scheduled       | A reoccuring time |                                                        |
+    | Desktop Flow    | Any of the above  | Records and automates a process in the desktop/website |
+    | Process Advisor | Any of the above  | Guides a user through a multistep process              |
+
+
+## References
+* https://make.powerautomate.com/home?fromflowportal=true
 
