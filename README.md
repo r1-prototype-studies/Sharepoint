@@ -2,19 +2,27 @@
 
 - [Sharepoint](#sharepoint)
   - [Notes](#notes)
-  - [Steps](#steps)
   - [References](#references)
-- [PowerApps](#powerapps)
+- [Sharepoint Framework](#sharepoint-framework)
   - [Notes](#notes-1)
+  - [Steps](#steps)
+  - [References](#references-1)
+- [PowerApps](#powerapps)
+  - [Notes](#notes-2)
     - [Canvas App](#canvas-app)
     - [Common Data Service](#common-data-service)
     - [Portals](#portals)
-  - [References](#references-1)
-- [Power Automate AKA Flow](#power-automate-aka-flow)
-  - [Notes](#notes-2)
   - [References](#references-2)
+- [Power Automate AKA Flow](#power-automate-aka-flow)
+  - [Notes](#notes-3)
+  - [References](#references-3)
 
-# Sharepoint 
+# Sharepoint
+## Notes
+
+## References
+
+# Sharepoint Framework
 ## Notes
 * Creating self signed certificate is a one time activity. We need not create for all the web parts
 * Folder Anatomy
@@ -364,7 +372,27 @@
     | Desktop Flow    | Any of the above  | Records and automates a process in the desktop/website |
     | Process Advisor | Any of the above  | Guides a user through a multistep process              |
 
+* To use flows in power apps, **create it from the power apps page** and **not from power automate**.
+    * Use actions in power app.
+    * Use "Ask in Power Apps" in the flow.
+    * If the flow is changed, the flow under actions has to refreshed or removed and added again.
+* Create Http request triggers for third party application triggers.
+* Create Parallel branches for parallel execution of actions.
+* Approvals are manual interventions to actions.
+    * **Create an approval**: Create an approval and proceeds to the next action without waiting.
+    * **Start and wait for an approval**
+    * **Wait for an approval**: We havn't created any approval so nothing to wait for.
+* Outcome of an approval is "Approve".
+* You can order/ move only actions that has the required fields filled out.
+* You can multiple options in approvals.
+* Terminate forces the flow to error out.
+* "Apply to each" needs 2 arguments. One is Array and another is action. Current Item refers to the item from the loop.
+
+
 
 ## References
 * https://make.powerautomate.com/home?fromflowportal=true
+* https://learn.microsoft.com/en-us/power-automate/
+* https://learn.microsoft.com/en-us/azure/logic-apps/workflow-definition-language-functions-reference
+
 
