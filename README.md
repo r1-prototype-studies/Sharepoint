@@ -19,8 +19,39 @@
 
 # Sharepoint
 ## Notes
+* Organizations use SharePoint to create sites. 
+* A SharePoint team site is created whenever a microsoft 365 group is created in outlook online or Microsoft 365.
+* Things to do:
+  * Upload files to SharePoint document library.
+    * New
+    * Upload
+    * Drag and drop
+    * Sync
+    * Refer - Resources/SharePoint Folder.
+  * Open a document in a document library.
+    * If you open a document, it will be co authored by multiple users.
+    * But if you want to prevent modifications when you work on it, use check out and check in.
+  * Work with others on the same document at the same time.
+  * Share documents.
+  * Share Sites.
+  * Create a team site.
+* Say if you need calendar, go to site settings and click on "add an app" and search for the app (calendar). Even after adding calendar, it might not show in the side bar. So go to the site contents and check it.
+* To make Calendar available in the side bar, Go to List settings of the calendar > List Name, description and navigation > Navigation > Display this list on the quick launch.
+*  If you're looking for built-in apps such as Custom List, Document Library, Calendar and others, you can check for them in the classic experience.
+*  Recycle bin is found in the site contents and on the top right side. 
+*  Import spreadsheet app can be used to import excel as list. 
+*  
+
+
+
+
 
 ## References
+* https://support.microsoft.com/en-us/office/get-started-with-sharepoint-909ec2f0-05c8-4e92-8ad3-3f8b0b6cf261?ui=en-us&rs=en-us&ad=us
+
+
+
+
 
 # Sharepoint Framework
 ## Notes
@@ -387,7 +418,7 @@
 * You can multiple options in approvals.
 * Terminate forces the flow to error out.
 * "Apply to each" needs 2 arguments. One is Array and another is action. Current Item refers to the item from the loop.
-
+* 
 
 
 ## References
